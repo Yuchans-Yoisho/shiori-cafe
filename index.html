@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>珈琲と本 しおり｜架空の店舗サンプルサイト</title>
+<meta name="description" content="住宅街の小さなブックカフェ「しおり」のサンプルLPです（架空の店舗・制作実績用）。">
+<style>
+  :root{
+    --ink:#2b2420; --paper:#f7f1e8; --cream:#efe4d2; --accent:#9c4f2e; --muted:#7a6a5c; --line:#dccdb7;
+    --serif:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;
+    --sans:"Hiragino Sans","Noto Sans JP","Yu Gothic",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.9;letter-spacing:.03em}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  .wrap{width:min(1080px,90%);margin:0 auto}
+
+  /* header */
+  header{position:sticky;top:0;z-index:10;background:rgba(247,241,232,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-family:var(--serif);font-size:1.25rem;font-weight:600;text-decoration:none}
+  .logo small{font-size:.7rem;color:var(--muted);margin-left:.5em;font-family:var(--sans)}
+  .nav ul{display:flex;gap:1.8rem;list-style:none;font-size:.9rem}
+  .nav ul a{text-decoration:none}
+  .nav ul a:hover{color:var(--accent)}
+  .menu-btn{display:none;background:none;border:0;font-size:1.5rem;cursor:pointer;color:var(--ink)}
+
+  /* hero */
+  .hero{min-height:82vh;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(156,79,46,.18), transparent 45%),
+      radial-gradient(circle at 80% 70%, rgba(122,106,92,.2), transparent 50%),
+      var(--cream)}
+  .hero::after{content:"";position:absolute;inset:auto 0 0 0;height:120px;background:linear-gradient(transparent,var(--paper))}
+  .hero-inner{position:relative;z-index:1;padding:4rem 0}
+  .hero .eyebrow{font-size:.85rem;color:var(--muted);letter-spacing:.3em}
+  .hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(1.7rem,6vw,3.6rem);line-height:1.5;margin:1rem 0 1.5rem;writing-mode:horizontal-tb}
+  .hero p{color:var(--muted);max-width:30em;margin:0 auto 2.2rem}
+  .btn{display:inline-block;padding:.9rem 2.2rem;background:var(--accent);color:#fff;text-decoration:none;border-radius:999px;font-size:.95rem;transition:transform .2s,box-shadow .2s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(156,79,46,.3)}
+  .btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent);margin-left:.6rem}
+
+  /* sections */
+  section{padding:6rem 0}
+  .sec-title{font-family:var(--serif);font-size:clamp(1.5rem,3.5vw,2.1rem);font-weight:500;text-align:center;margin-bottom:.4rem}
+  .sec-sub{text-align:center;color:var(--muted);font-size:.8rem;letter-spacing:.3em;margin-bottom:3.5rem}
+
+  .concept{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+  .concept-visual{aspect-ratio:4/5;border-radius:4px;background:
+      repeating-linear-gradient(90deg,#c9b393 0 14px,#b89d7a 14px 18px,#d8c4a5 18px 34px,#a8896a 34px 38px),
+      var(--cream);position:relative}
+  .concept-visual::before{content:"";position:absolute;inset:55% 0 0 0;background:#8b6b4e}
+  .concept-visual::after{content:"☕";position:absolute;bottom:12%;left:50%;transform:translateX(-50%);font-size:3.5rem;filter:drop-shadow(0 4px 6px rgba(0,0,0,.25))}
+  .concept h3{font-family:var(--serif);font-size:1.5rem;font-weight:500;margin-bottom:1.2rem;line-height:1.6}
+  .concept p+p{margin-top:1rem}
+
+  .menu{background:#fff}
+  .menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+  .card{border:1px solid var(--line);border-radius:6px;padding:2rem;background:var(--paper)}
+  .card .icon{font-size:2rem;margin-bottom:.8rem}
+  .card h4{font-family:var(--serif);font-size:1.15rem;font-weight:500;margin-bottom:.8rem}
+  .card ul{list-style:none}
+  .card li{display:flex;justify-content:space-between;border-bottom:1px dotted var(--line);padding:.45rem 0;font-size:.92rem}
+  .card li span:last-child{color:var(--accent);white-space:nowrap;margin-left:1rem}
+
+  .voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+  .voice{background:#fff;padding:2rem;border-radius:6px;position:relative;font-size:.92rem}
+  .voice::before{content:"“";font-family:var(--serif);font-size:4rem;color:var(--line);position:absolute;top:-.3rem;left:1rem;line-height:1}
+  .voice p{position:relative}
+  .voice .who{margin-top:1rem;color:var(--muted);font-size:.8rem}
+  .note{text-align:center;color:var(--muted);font-size:.75rem;margin-top:1.5rem}
+
+  .info{background:var(--cream)}
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+  .info dl{display:grid;grid-template-columns:7em 1fr;row-gap:1rem}
+  .info dt{color:var(--muted);font-size:.9rem}
+  .map{min-height:280px;border-radius:6px;background:
+      linear-gradient(0deg,transparent 48%,#d6c6ad 48% 52%,transparent 52%),
+      linear-gradient(90deg,transparent 30%,#d6c6ad 30% 33%,transparent 33%),
+      linear-gradient(90deg,transparent 70%,#d6c6ad 70% 72%,transparent 72%),
+      #e8dcc8;position:relative}
+  .map::after{content:"📍 しおり";position:absolute;top:38%;left:45%;background:#fff;padding:.3rem .8rem;border-radius:4px;font-size:.85rem;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+
+  .contact form{max-width:560px;margin:0 auto;display:grid;gap:1.2rem}
+  .contact label{font-size:.9rem;display:block;margin-bottom:.3rem}
+  .contact input,.contact select,.contact textarea{width:100%;padding:.8rem 1rem;border:1px solid var(--line);border-radius:4px;background:#fff;font:inherit}
+  .contact input:focus,.contact select:focus,.contact textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
+  .contact textarea{min-height:140px;resize:vertical}
+  .contact .btn{border:0;cursor:pointer;justify-self:center;font:inherit}
+  .form-msg{text-align:center;color:var(--accent);min-height:1.5em}
+
+  footer{background:var(--ink);color:#cbbfb1;text-align:center;padding:2.5rem 0;font-size:.8rem}
+  footer .demo{margin-top:.6rem;opacity:.7}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
+  .reveal.show{opacity:1;transform:none}
+
+  @media (max-width:820px){
+    .menu-btn{display:block}
+    .nav ul{position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;background:var(--paper);border-bottom:1px solid var(--line);display:none}
+    .nav ul.open{display:flex}
+    .nav ul li a{display:block;padding:1rem 5%}
+    .concept,.info-grid{grid-template-columns:1fr;gap:2.5rem}
+    .menu-grid,.voice-grid{grid-template-columns:1fr}
+    section{padding:4.5rem 0}
+    .btn.ghost{margin:.8rem 0 0}
+  }
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo">珈琲と本 しおり<small>Book Cafe</small></a>
+    <button class="menu-btn" aria-label="メニューを開く" aria-expanded="false">☰</button>
+    <ul id="nav-list">
+      <li><a href="#concept">コンセプト</a></li>
+      <li><a href="#menu">メニュー</a></li>
+      <li><a href="#voice">お客様の声</a></li>
+      <li><a href="#info">アクセス</a></li>
+      <li><a href="#contact">ご予約</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-inner wrap">
+      <p class="eyebrow">SINCE 2019 ・ BOOK & COFFEE</p>
+      <h1>一杯の珈琲と、<br>ページをめくる時間を。</h1>
+      <p>住宅街の角にある、本棚に囲まれた小さなカフェ。<br>3,000冊の本と自家焙煎の珈琲で、あなたの午後をお迎えします。</p>
+      <a href="#contact" class="btn">席を予約する</a><a href="#menu" class="btn ghost">メニューを見る</a>
+    </div>
+  </section>
+
+  <section id="concept">
+    <div class="wrap concept reveal">
+      <div class="concept-visual" role="img" aria-label="本棚とコーヒーカップのイメージ"></div>
+      <div>
+        <p class="sec-sub" style="text-align:left;margin-bottom:.8rem">CONCEPT</p>
+        <h3>「しおり」は、<br>途中で閉じてもいい場所です。</h3>
+        <p>読みかけの本に挟むしおりのように、忙しい日々のあいだに、ちょっと立ち止まれる場所をつくりたい。そんな思いで始めたお店です。</p>
+        <p>店内の本はすべて自由にお読みいただけます。気に入った一冊があれば、お持ち帰りいただける古書の販売もしています。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu" class="menu">
+    <div class="wrap">
+      <h2 class="sec-title">メニュー</h2>
+      <p class="sec-sub">MENU</p>
+      <div class="menu-grid reveal">
+        <div class="card">
+          <div class="icon">☕</div>
+          <h4>珈琲</h4>
+          <ul>
+            <li><span>しおりブレンド</span><span>¥550</span></li>
+            <li><span>深煎りマンデリン</span><span>¥650</span></li>
+            <li><span>カフェオレ</span><span>¥600</span></li>
+            <li><span>水出しアイス珈琲</span><span>¥600</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="icon">🍰</div>
+          <h4>甘いもの</h4>
+          <ul>
+            <li><span>固めのプリン</span><span>¥480</span></li>
+            <li><span>季節のタルト</span><span>¥580</span></li>
+            <li><span>バスクチーズケーキ</span><span>¥520</span></li>
+            <li><span>珈琲ゼリー</span><span>¥450</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="icon">📚</div>
+          <h4>読書セット</h4>
+          <ul>
+            <li><span>珈琲＋甘いもの</span><span>¥950</span></li>
+            <li><span>3時間ゆっくり席</span><span>¥1,500</span></li>
+            <li><span>古書（店内販売）</span><span>¥300〜</span></li>
+            <li><span>おかわり珈琲</span><span>¥300</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="voice">
+    <div class="wrap">
+      <h2 class="sec-title">お客様の声</h2>
+      <p class="sec-sub">VOICE</p>
+      <div class="voice-grid reveal">
+        <div class="voice"><p>（ここにお客様の感想が入ります。実際の店舗では、いただいた口コミやアンケートの声を掲載します）</p><p class="who">— 掲載例 1</p></div>
+        <div class="voice"><p>（例：居心地の良さ、珈琲の味、リピートした理由など。具体的なエピソードがあると伝わりやすくなります）</p><p class="who">— 掲載例 2</p></div>
+        <div class="voice"><p>（例：一人でも入りやすい、作業や読書に集中できる、など利用シーンが分かる声を選びます）</p><p class="who">— 掲載例 3</p></div>
+      </div>
+      <p class="note">※ このサイトは架空の店舗による制作サンプルです。掲載内容はダミーです。</p>
+    </div>
+  </section>
+
+  <section id="info" class="info">
+    <div class="wrap">
+      <h2 class="sec-title">店舗情報・アクセス</h2>
+      <p class="sec-sub">ACCESS</p>
+      <div class="info-grid reveal">
+        <dl>
+          <dt>店名</dt><dd>珈琲と本 しおり</dd>
+          <dt>住所</dt><dd>〒000-0000 ○○市○○町1-2-3</dd>
+          <dt>営業時間</dt><dd>11:00〜19:00（L.O. 18:30）</dd>
+          <dt>定休日</dt><dd>火曜・第3水曜</dd>
+          <dt>席数</dt><dd>14席（カウンター6・テーブル8）</dd>
+          <dt>アクセス</dt><dd>○○駅 東口から徒歩7分</dd>
+        </dl>
+        <div class="map" role="img" aria-label="地図のイメージ（実案件ではGoogleマップを埋め込み）"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <h2 class="sec-title">ご予約・お問い合わせ</h2>
+      <p class="sec-sub">CONTACT</p>
+      <form id="form" novalidate>
+        <div><label for="name">お名前</label><input id="name" name="name" required autocomplete="name"></div>
+        <div><label for="email">メールアドレス</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+        <div><label for="type">ご用件</label>
+          <select id="type" name="type">
+            <option>席のご予約</option><option>貸切のご相談</option><option>その他のお問い合わせ</option>
+          </select></div>
+        <div><label for="msg">内容（ご希望の日時・人数など）</label><textarea id="msg" name="msg"></textarea></div>
+        <button type="submit" class="btn">送信する</button>
+        <p class="form-msg" id="form-msg" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 珈琲と本 しおり</p>
+  <p class="demo">This is a fictional demo site for portfolio purposes.</p>
+</footer>
+
+<script>
+  // mobile menu
+  const btn=document.querySelector('.menu-btn'), list=document.getElementById('nav-list');
+  btn.addEventListener('click',()=>{const o=list.classList.toggle('open');btn.setAttribute('aria-expanded',o);});
+  list.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{list.classList.remove('open');btn.setAttribute('aria-expanded',false);}));
+
+  // reveal on scroll
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}}),{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // demo form (実案件では Formspree / Googleフォーム / Cloudflare Workers 等に接続)
+  document.getElementById('form').addEventListener('submit',e=>{
+    e.preventDefault();
+    const f=e.target, m=document.getElementById('form-msg');
+    if(!f.name.value.trim()||!f.email.checkValidity()){m.textContent='お名前と正しいメールアドレスを入力してください。';return;}
+    m.textContent='送信ありがとうございます（デモのため実際には送信されません）。';
+    f.reset();
+  });
+</script>
+</body>
+</html>
